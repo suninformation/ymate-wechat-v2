@@ -110,10 +110,10 @@ public interface IWechat {
 
         public static EventType parse(String type) {
             if (StringUtils.isNotBlank(type)) {
-                if ("view".equals(type)) {
+                if ("VIEW".equals(type)) {
                     return EventType.MENU_VIEW;
                 }
-                if ("click".equals(type)) {
+                if ("CLICK".equals(type)) {
                     return EventType.MENU_CLICK;
                 }
                 if ("subscribe".equals(type)) {
