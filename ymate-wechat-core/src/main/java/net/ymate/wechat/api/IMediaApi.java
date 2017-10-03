@@ -31,15 +31,15 @@ import java.util.List;
  */
 public interface IMediaApi {
 
-    String MEDIA_GET = "http://file.api.weixin.qq.com/cgi-bin/media/get?access_token=";
+    String MEDIA_GET = "https://api.weixin.qq.com/cgi-bin/media/get?access_token=";
 
-    String MEDIA_UPLOAD = "http://file.api.weixin.qq.com/cgi-bin/media/upload?access_token=";
+    String MEDIA_UPLOAD = "https://api.weixin.qq.com/cgi-bin/media/upload?access_token=";
 
     String MEDIA_UPLOAD_IMAGE = "https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=";
 
     String MEDIA_UPLOAD_NEWS = "https://api.weixin.qq.com/cgi-bin/media/uploadnews?access_token=";
 
-    String MEDIA_UPLOAD_VIDEO = "http://file.api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=";
+    String MEDIA_UPLOAD_VIDEO = "https://api.weixin.qq.com/cgi-bin/media/uploadvideo?access_token=";
 
     //
 
