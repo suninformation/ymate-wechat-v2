@@ -102,10 +102,12 @@ public class WechatLocation extends BaseEntity<WechatLocation, java.lang.String>
         this.createTime = createTime;
     }
 
+    @Override
     public java.lang.String getId() {
         return id;
     }
 
+    @Override
     public void setId(java.lang.String id) {
         this.id = id;
     }

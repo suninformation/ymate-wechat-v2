@@ -34,6 +34,7 @@ public class MessageEventListener implements IEventListener<WechatEvent> {
 
     private static final Log _LOG = LogFactory.getLog(MessageEventListener.class);
 
+    @Override
     public boolean handle(WechatEvent context) {
         String _content = null;
         JSONObject _jsonObj = null;

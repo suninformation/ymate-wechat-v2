@@ -143,10 +143,12 @@ public class WechatMessage extends BaseEntity<WechatMessage, java.lang.String> {
         this.createTime = createTime;
     }
 
+    @Override
     public java.lang.String getId() {
         return id;
     }
 
+    @Override
     public void setId(java.lang.String id) {
         this.id = id;
     }

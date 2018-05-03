@@ -33,6 +33,7 @@ public class SubscribeEventListener implements IEventListener<WechatEvent> {
 
     private static final Log _LOG = LogFactory.getLog(SubscribeEventListener.class);
 
+    @Override
     public boolean handle(final WechatEvent context) {
         switch (context.getEventName()) {
             case SUBSCRIBE:

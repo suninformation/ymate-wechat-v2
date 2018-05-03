@@ -178,10 +178,12 @@ public class WechatAccount extends BaseEntity<WechatAccount, java.lang.String> {
         this.lastModifyTime = lastModifyTime;
     }
 
+    @Override
     public java.lang.String getId() {
         return id;
     }
 
+    @Override
     public void setId(java.lang.String id) {
         this.id = id;
     }

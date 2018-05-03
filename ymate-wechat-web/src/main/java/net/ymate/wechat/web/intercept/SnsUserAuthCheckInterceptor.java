@@ -36,6 +36,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SnsUserAuthCheckInterceptor implements IInterceptor {
 
+    @Override
     public Object intercept(InterceptContext context) throws Exception {
         IView _returnView = null;
         // 是否需要检查AccessToken状态, 默认为false

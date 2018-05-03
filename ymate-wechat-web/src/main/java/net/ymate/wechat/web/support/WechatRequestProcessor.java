@@ -41,6 +41,7 @@ public class WechatRequestProcessor implements IRequestProcessor {
         _params.add(timestamp);
         _params.add(nonce);
         Collections.sort(_params, new Comparator<String>() {
+            @Override
             public int compare(String o1, String o2) {
                 return o1.compareTo(o2);
             }
@@ -48,6 +49,7 @@ public class WechatRequestProcessor implements IRequestProcessor {
         return DigestUtils.sha1Hex(_params.get(0) + _params.get(1) + _params.get(2)).equals(signature);
     }
 
+    @Override
     public Map<String, Object> processRequestParams(IWebMvc owner, RequestMeta requestMeta) throws Exception {
         IRequestContext _reqContext = WebContext.getRequestContext();
         String _accountId = StringUtils.substringAfterLast(_reqContext.getRequestMapping(), "/");

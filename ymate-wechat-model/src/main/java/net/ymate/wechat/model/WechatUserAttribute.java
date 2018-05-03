@@ -84,10 +84,12 @@ public class WechatUserAttribute extends BaseEntity<WechatUserAttribute, java.la
         this.owner = owner;
     }
 
+    @Override
     public java.lang.String getId() {
         return id;
     }
 
+    @Override
     public void setId(java.lang.String id) {
         this.id = id;
     }

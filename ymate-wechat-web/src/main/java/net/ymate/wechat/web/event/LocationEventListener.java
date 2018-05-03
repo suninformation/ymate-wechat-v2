@@ -37,6 +37,7 @@ public class LocationEventListener implements IEventListener<WechatEvent> {
 
     private static final Log _LOG = LogFactory.getLog(LocationEventListener.class);
 
+    @Override
     public boolean handle(WechatEvent context) {
         switch (context.getEventName()) {
             case LOCATION:

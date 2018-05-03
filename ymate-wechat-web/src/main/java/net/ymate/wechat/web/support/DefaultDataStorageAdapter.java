@@ -158,11 +158,12 @@ public class DefaultDataStorageAdapter implements IDataStorageAdapter {
         //
         try {
             Transactions.execute(new ITrade() {
+                @Override
                 public void deal() throws Throwable {
                     String _attrId = DigestUtils.md5Hex(userStatus.accountId() + userStatus.id() + Constants.ATTR_ACCESS_TOKEN);
                     String _attrValue = JSON.toJSONString(ClassUtils.wrapper(userStatus).toMap());
                     //
-                    WechatUserAttribute _attr = WechatUserAttribute.builder().id(_attrId).build().load(IDBLocker.MYSQL);
+                    WechatUserAttribute _attr = WechatUserAttribute.builder().id(_attrId).build().load(IDBLocker.DEFAULT);
                     if (_attr != null) {
                         _attr.setAttrValue(_attrValue);
                         _attr.update(Fields.create(WechatUserAttribute.FIELDS.ATTR_VALUE));
@@ -191,9 +192,10 @@ public class DefaultDataStorageAdapter implements IDataStorageAdapter {
     public void saveOrUpdateUserInfo(final String accountId, final WxSnsUser snsUser, final WxSnsAccessToken snsAccessToken) {
         try {
             Transactions.execute(new ITrade() {
+                @Override
                 public void deal() throws Throwable {
                     String _wxUid = buildWxUid(accountId, snsUser.getOpenId());
-                    WechatUser _wxUser = WechatUser.builder().id(_wxUid).build().load(Fields.create(WechatUser.FIELDS.ID), IDBLocker.MYSQL);
+                    WechatUser _wxUser = WechatUser.builder().id(_wxUid).build().load(Fields.create(WechatUser.FIELDS.ID), IDBLocker.DEFAULT);
                     long _currentTime = System.currentTimeMillis();
                     boolean _isNewUser = false;
                     Fields _fields = Fields.create();
@@ -232,7 +234,7 @@ public class DefaultDataStorageAdapter implements IDataStorageAdapter {
                         String _attrId = DigestUtils.md5Hex(accountId + _wxUid + Constants.ATTR_ACCESS_TOKEN);
                         String _attrValue = JSON.toJSONString(ClassUtils.wrapper(WechatUserStatus.create(_wxUid, accountId, snsAccessToken)).toMap());
                         //
-                        WechatUserAttribute _attr = WechatUserAttribute.builder().id(_attrId).build().load(IDBLocker.MYSQL);
+                        WechatUserAttribute _attr = WechatUserAttribute.builder().id(_attrId).build().load(IDBLocker.DEFAULT);
                         if (_attr != null) {
                             _attr.setAttrValue(_attrValue);
                             _attr.update(Fields.create(WechatUserAttribute.FIELDS.ATTR_VALUE));
@@ -257,9 +259,10 @@ public class DefaultDataStorageAdapter implements IDataStorageAdapter {
     public void saveOrUpdateUserInfo(final String accountId, final WxUser user) {
         try {
             Transactions.execute(new ITrade() {
+                @Override
                 public void deal() throws Throwable {
                     String _wxUid = buildWxUid(accountId, user.getOpenId());
-                    WechatUser _wxUser = WechatUser.builder().id(_wxUid).build().load(Fields.create(WechatUser.FIELDS.ID, WechatUser.FIELDS.IS_SUBSCRIBE, WechatUser.FIELDS.SUBSCRIBE_TIME), IDBLocker.MYSQL);
+                    WechatUser _wxUser = WechatUser.builder().id(_wxUid).build().load(Fields.create(WechatUser.FIELDS.ID, WechatUser.FIELDS.IS_SUBSCRIBE, WechatUser.FIELDS.SUBSCRIBE_TIME), IDBLocker.DEFAULT);
                     long _currentTime = System.currentTimeMillis();
                     boolean _isNewUser = false;
                     Fields _fields = Fields.create();

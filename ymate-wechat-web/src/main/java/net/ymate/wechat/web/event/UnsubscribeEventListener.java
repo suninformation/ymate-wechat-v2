@@ -33,6 +33,7 @@ public class UnsubscribeEventListener implements IEventListener<WechatEvent> {
 
     private static final Log _LOG = LogFactory.getLog(UnsubscribeEventListener.class);
 
+    @Override
     public boolean handle(WechatEvent context) {
         switch (context.getEventName()) {
             case UNSUBSCRIBE:

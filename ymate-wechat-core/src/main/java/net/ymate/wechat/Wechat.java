@@ -158,6 +158,7 @@ public class Wechat implements IModule, IWechat {
         }
     }
 
+    @Override
     public void destroy() throws Exception {
         if (__inited) {
             __inited = false;
@@ -175,10 +176,12 @@ public class Wechat implements IModule, IWechat {
         }
     }
 
+    @Override
     public YMP getOwner() {
         return __owner;
     }
 
+    @Override
     public IWechatModuleCfg getModuleCfg() {
         return __moduleCfg;
     }

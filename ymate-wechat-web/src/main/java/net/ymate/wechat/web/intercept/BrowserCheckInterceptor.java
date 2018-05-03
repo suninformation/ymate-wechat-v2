@@ -36,11 +36,13 @@ import java.util.regex.Pattern;
  */
 public class BrowserCheckInterceptor implements IInterceptor {
 
+    private static final Pattern __pattern = Pattern.compile("MicroMessenger/(\\d+).+");
+
+    @Override
     public Object intercept(InterceptContext context) throws Exception {
         String _agent = WebContext.getRequest().getHeader("User-Agent");
         if (StringUtils.isNotBlank(_agent)) {
-            Pattern _p = Pattern.compile("MicroMessenger/(\\d+).+");
-            Matcher _m = _p.matcher(_agent);
+            Matcher _m = __pattern.matcher(_agent);
             String _version = null;
             if (_m.find()) {
                 _version = _m.group(1);

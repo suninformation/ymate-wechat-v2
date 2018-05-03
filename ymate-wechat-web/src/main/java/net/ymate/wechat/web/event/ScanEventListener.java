@@ -62,11 +62,12 @@ public class ScanEventListener implements IEventListener<WechatEvent> {
     private void __doSaveScan(final String accountId, final String openId, final String scene, final String ticket) {
         try {
             Transactions.execute(new ITrade() {
+                @Override
                 public void deal() throws Throwable {
                     String _wxUid = Wechat.get().buildWxUid(accountId, openId);
                     String _id = DigestUtils.md5Hex(_wxUid + scene + StringUtils.trimToEmpty(ticket));
                     //
-                    WechatScan _result = WechatScan.builder().id(_id).build().load(Fields.create(WechatScan.FIELDS.ID, WechatScan.FIELDS.HITS), IDBLocker.MYSQL);
+                    WechatScan _result = WechatScan.builder().id(_id).build().load(Fields.create(WechatScan.FIELDS.ID, WechatScan.FIELDS.HITS), IDBLocker.DEFAULT);
                     long _currentTime = System.currentTimeMillis();
                     if (_result == null) {
                         WechatScan.builder()
